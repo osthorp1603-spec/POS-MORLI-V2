@@ -1,27 +1,26 @@
 #  MORLIGIFTSTORE POS — Versión 2
-## Descripción
-Sistema de punto de venta (POS) para la gestión integral de una tienda de regalos. Permite registrar ventas con lector de código de barras, controlar el inventario, gestionar clientes, crear anchetas/decoraciones, generar facturas e imprimir tickets en impresora térmica. Incluye un módulo para visualizar las ventas con su respectiva ganancia.
+## Description
+Point of sale (POS) system for the comprehensive management of a gift shop. It allows registering sales with a barcode reader, managing inventory, managing customers, creating gift baskets/decorations, generating invoices, and printing tickets on a thermal printer. It includes a module to view sales with their respective profit.
 
-Versión 2.0 — Segunda iteración del sistema, con mejoras en la interfaz, optimización de procesos y nuevas funcionalidades.
+Version 2.0 — Second iteration of the system, with improvements to the interface, process optimization, and new features.
 
-## ¿Qué es la Versión 2?
-Esta es la segunda versión del sistema. A diferencia de la Versión 1, se enfoca en:
+## What is Version 2?
+This is the second version of the system. Unlike Version 1, it focuses on:
 
-- Código más limpio y organizado.
-- Interfaz visualmente mejorada con CustomTkinter (ctk).
-- Mayor robustez.
+-Cleaner and more organized code.
+-Visually improved interface with CustomTkinter (ctk).
+-Greater robustness.
 
-## Tecnologías utilizadas
+## Technologies used
 
-- **Python** — lenguaje principal del proyecto.
-- **Tkinter / CustomTkinter (ctk)** — interfaz gráfica de escritorio, con componentes modernos.
-- **SQLite** — base de datos local.
-- **ReportLab** — generación de facturas y etiquetas en PDF.
-- **win32print** — impresión térmica POS y apertura del cajón.
-- **Matplotlib** — gráficos para los reportes.
-- **Arquitectura modular** — separación en UI, lógica y utilidades.
+- **Python** — main language of the project.
+- **Tkinter / CustomTkinter (ctk)** — desktop graphical interface, with modern components.
+- **SQLite** —local database.
+- **ReportLab** — generation of invoices and labels in PDF.
+- **win32print** — thermal POS printing and cash drawer opening.
+- **Modular architecture** — separation into views, logic, and utilities.
 
-## Estructura del proyecto
+## Project structure
 ```
 POS MORLI/
 │
@@ -70,26 +69,26 @@ POS MORLI/
 └── README.md
 
 ```
-## Explicación técnica
+## Technical explanation
 
 El sistema fue desarrollado en Python, con interfaz gráfica en Tkinter y una base de datos local en SQLite.
 
 El proyecto sigue una arquitectura modular que separa responsabilidades:
 
-- **UI:** contiene las ventanas del sistema: ventas, inventario, clientes, anchetas, movimientos de inventario y las ventanas contables de interfaz.
-- **Lógica:** contiene las operaciones de negocio y reportes: corte Z, cancelaciones (RF), generación de códigos de barras y todos los cálculos contables (utilidad, balance, estado de resultados, punto de equilibrio, etc.).
-- **Utilidades:** herramientas auxiliares, como la impresión de tickets en la impresora térmica.
+- **Views:** contains the system windows: sales, inventory, gift baskets, barcode assignment, daily sales, payment, cash withdrawal, reports, and the main container.
+- **Logic:** contains business operations and reports: Z cut, cancellations (RF), ticket printing, and database access.
+- **Utilities:** auxiliary tools, such as path handling and PDF generation.
 
-### Flujo general del sistema
+### General system flow
 
-1. El vendedor registra los productos mediante el lector de código de barras o por búsqueda manual.
-2. Al cobrar, el sistema acepta pago en efectivo, QR, tarjeta o pago dividido.
-3. La venta se guarda en la base de datos, se descuenta el stock y se genera la factura en PDF.
-4. El ticket se imprime en la impresora térmica y, si el pago es en efectivo, se abre el cajón.
-5. Al final del día se realiza el Corte Z, que genera el resumen de caja y cierra la jornada.
-6. El administrador puede consultar reportes de utilidad, inventario y la contabilidad completa.
+1. The seller registers products using the barcode reader or by manual search.
+2. At checkout, the system accepts payment in cash, QR, card, or split payment.
+3. The sale is saved in the database, stock is deducted, and the invoice is generated in PDF.
+4. The ticket is printed on the thermal printer and, if payment is in cash, the cash drawer opens.
+5. At the end of the day, the Z Cut is performed, which generates the cash summary and closes the day.
+6. The administrator can consult reports on profit, inventory, and full accounting.
 
-## Evidencias
+## Evidence
 
 ![ventana_principal](evidencias/ventanaprincipal.png)
 ![ventana_de_compra](evidencias/ventanaventa.png)
