@@ -39,18 +39,18 @@ def generar_pdf_etiqueta(codigo, nombre_producto, precio):
         barcode1 = crear_codigo_barras(codigo)
         x_izq = (30 * mm - barcode1.width) / 2
         barcode1.drawOn(c, x_izq, y_barra)
-        c.setFont("Helvetica", 5.8)
+        c.setFont("Helvetica", 6.8)
         c.drawCentredString(15 * mm, y_nombre, nombre_producto[:22])
-        c.setFont("Helvetica-Bold", 6)
+        c.setFont("Helvetica-Bold", 7)
         c.drawCentredString(15 * mm, y_precio, f"${precio:,.0f}")
 
         # Etiqueta derecha
         barcode2 = crear_codigo_barras(codigo)
         x_der = 30 * mm + (30 * mm - barcode2.width) / 2
         barcode2.drawOn(c, x_der, y_barra)
-        c.setFont("Helvetica", 5.8)
+        c.setFont("Helvetica", 6.8)
         c.drawCentredString(30 * mm + 15 * mm, y_nombre, nombre_producto[:22])
-        c.setFont("Helvetica-Bold", 6)
+        c.setFont("Helvetica-Bold", 7)
         c.drawCentredString(30 * mm + 15 * mm, y_precio, f"${precio:,.0f}")
         c.save()
 

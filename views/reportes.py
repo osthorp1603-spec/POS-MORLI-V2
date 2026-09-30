@@ -25,7 +25,7 @@ class Reportes(tk.Frame):
     def widgets(self):  
         # FRAME TITULO   SE NECESITA EL FRAME 1 PARA QUE TAPE EL PEDAZO DE FONOD QEU VIEN DEL CONTAINER
         frame1 = tk.Frame(self,bg=COLOR_FONDO,highlightbackground=COLOR_FONDO,highlightthickness=0)
-        frame1.place(x=0,y=0,width=1275,height=80)  
+        frame1.place(x=0,y=0,width=1273,height=80)  
 
         # CAPA QEU CONTINEE EL TITULO
         titulo = tk.Label(self,text="Reporte de ventas",bg=COLOR_FONDO,fg=COLOR_TITULO,font="sans 30 bold",anchor="w")

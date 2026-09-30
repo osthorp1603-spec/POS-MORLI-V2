@@ -30,7 +30,7 @@ class Inventario(tk.Frame):
 
     # FRAME DE LA VENTANA INVENTARIO //////////
         frame2 = tk.Frame(self,bg=COLOR_FONDO,highlightbackground=COLOR_FONDO,highlightthickness=1)
-        frame2.place(x=0,y=80,width=1275,height=729)
+        frame2.place(x=0,y=80,width=1273,height=729)
 
     # FRAME LABEL LATERAL    
         lblframe = ctk.CTkFrame(frame2,fg_color=COLOR_TARJETA,corner_radius=10,width=290,height=710)
@@ -183,7 +183,7 @@ class Inventario(tk.Frame):
         self.entry_pistola = ctk.CTkEntry(self, width=1, height=1)
         self.entry_pistola.place(x=-100, y=-100)
         self.entry_pistola.bind("<Return>", self.leer_codigo_barras)
-        self.entry_pistola.focus_set() 
+        self.after(200, self.enfocar_lector) 
 
  #("ID", "PRODUCTO","PROVEEDOR","PRECIO","COSTO","STOCK", "TIPO PRODUCTO","CODIGO BARRAS","UMBRAL STOCK")
     def mostrar(self):
@@ -429,4 +429,8 @@ class Inventario(tk.Frame):
             self.tre.insert("", "end", values=(
                 producto[0], producto[1], producto[2], precio, costo,
                 producto[5], producto[6], codigo_tv, umbral
-            ))          
+            ))        
+
+    def enfocar_lector(self):
+        self.entry_pistola.focus_set()
+        self.after(1000, self.enfocar_lector)  

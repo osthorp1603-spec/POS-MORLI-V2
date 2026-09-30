@@ -50,14 +50,14 @@ class Container(tk.Frame):
         self.show_frames(Ventas,"1100x660+120+20")
 
     def inventario(self):
-        self.show_frames(Inventario,"1275x810+5+20") 
+        self.show_frames(Inventario,"1273x810+5+20") 
 
     def salida_efectivo(self):
         self.show_frames(Salida_efectivo,"400x300+500+170")  
 
     def reportes(self):
         self.winfo_toplevel().withdraw()
-        ventana = self.show_frames(Reportes,"1275x810+5+20") 
+        ventana = self.show_frames(Reportes,"1273x810+5+20") 
         ventana.protocol("WM_DELETE_WINDOW", lambda: self.cerrar_reportes(ventana))
 
     def cerrar_reportes(self, ventana):

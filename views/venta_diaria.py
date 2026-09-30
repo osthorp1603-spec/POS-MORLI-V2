@@ -23,7 +23,7 @@ class VentaDiaria():
     def abrir_ventana_diaria(self):
         self.ventana_diaria = tk.Toplevel(self.ventas)
         self.ventana_diaria.title("Ventas diarias")
-        self.ventana_diaria.geometry("1275x810+5+20")
+        self.ventana_diaria.geometry("1273x810+5+20")
         self.ventana_diaria.config(bg=COLOR_FONDO)
         self.ventana_diaria.resizable(False, False) 
 
