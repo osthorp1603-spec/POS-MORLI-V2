@@ -155,7 +155,7 @@ class Ventas(tk.Frame):
         self.entry_pistola = ctk.CTkEntry(self, width=1, height=1)
         self.entry_pistola.place(x=-100, y=-100)
         self.entry_pistola.bind("<Return>", self.leer_codigo_barras)
-        self.after(200, self.enfocar_lector)
+        self.after(200, lambda: self.entry_pistola.focus_set())
             
        # BLOQUE METODOS ////////////////////////////////////////////////////////////////////
     def actualizar_numero_factura(self):
@@ -316,5 +316,7 @@ class Ventas(tk.Frame):
         self.actualizar_total()
 
     def enfocar_lector(self):
-        self.entry_pistola.focus_set()
-        self.after(1000, self.enfocar_lector)     
+        actual = self.focus_get()
+        if actual not in [self.entry_producto, self.entry_cantidad, self.entry_precio]:
+            self.entry_pistola.focus_set()
+        self.after(1000, self.enfocar_lector)

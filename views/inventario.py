@@ -180,10 +180,7 @@ class Inventario(tk.Frame):
         self.mostrar()
 
     # LECTOR PISTOLA 
-        self.entry_pistola = ctk.CTkEntry(self, width=1, height=1)
-        self.entry_pistola.place(x=-100, y=-100)
-        self.entry_pistola.bind("<Return>", self.leer_codigo_barras)
-        self.after(200, self.enfocar_lector) 
+      
 
  #("ID", "PRODUCTO","PROVEEDOR","PRECIO","COSTO","STOCK", "TIPO PRODUCTO","CODIGO BARRAS","UMBRAL STOCK")
     def mostrar(self):
@@ -335,15 +332,29 @@ class Inventario(tk.Frame):
     def filtrar(self, event=None):
         texto = self.entry_buscar.get().strip()
 
+        if event and event.keysym == "Return":
+            resultado = buscar_producto_por_codigo(texto)
+            if resultado:
+                nombre, _ = resultado
+                for item in self.tre.get_children():
+                    self.tre.delete(item)
+                for producto in buscar_productos_completos_por_nombre(nombre):
+                    precio = f"{float(producto[3]):,.0f}" if producto[3] else ""
+                    costo  = f"{float(producto[4]):,.0f}" if producto[4] else ""
+                    codigo_tv = producto[7] if producto[7] is not None else "-"
+                    umbral = producto[8] if producto[8] is not None else "-"
+                    self.tre.insert("", "end", values=(
+                        producto[0], producto[1], producto[2], precio, costo,
+                        producto[5], producto[6], codigo_tv, umbral
+                    ))
+                self.entry_buscar.delete(0, tk.END)
+            return
+
         for item in self.tre.get_children():
             self.tre.delete(item)
 
         if not texto:
             self.mostrar()
-            return
-
-        if event and event.keysym == "Return":
-            pass
             return
 
         productos = buscar_productos_completos_por_nombre(texto)
@@ -356,6 +367,7 @@ class Inventario(tk.Frame):
                 producto[0], producto[1], producto[2], precio, costo,
                 producto[5], producto[6], codigo, umbral
             ))
+    
     def limpiar_busqueda(self):
         self.entry_buscar.delete(0, "end")
         self.mostrar()    
@@ -404,33 +416,4 @@ class Inventario(tk.Frame):
             self.mostrar()
             messagebox.showinfo("Éxito", "Umbral actualizado correctamente.", parent=self)
         else:
-            messagebox.showerror("Error", "No se pudo actualizar el umbral.", parent=self)       
-
-    def leer_codigo_barras(self, event=None):
-        codigo = self.entry_pistola.get().strip()
-        self.entry_pistola.delete(0, tk.END)
-        if not codigo:
-            return
-
-        resultado = buscar_producto_por_codigo(codigo)
-        if not resultado:
-            return
-
-        nombre, _ = resultado
-
-        for item in self.tre.get_children():
-            self.tre.delete(item)
-
-        for producto in buscar_productos_completos_por_nombre(nombre):
-            precio = f"{float(producto[3]):,.0f}" if producto[3] else ""
-            costo  = f"{float(producto[4]):,.0f}" if producto[4] else ""
-            codigo_tv = producto[7] if producto[7] is not None else "-"
-            umbral = producto[8] if producto[8] is not None else "-"
-            self.tre.insert("", "end", values=(
-                producto[0], producto[1], producto[2], precio, costo,
-                producto[5], producto[6], codigo_tv, umbral
-            ))        
-
-    def enfocar_lector(self):
-        self.entry_pistola.focus_set()
-        self.after(1000, self.enfocar_lector)  
+            messagebox.showerror("Error", "No se pudo actualizar el umbral.", parent=self)      
