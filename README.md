@@ -75,9 +75,10 @@ El sistema fue desarrollado en Python, con interfaz gráfica en Tkinter y una ba
 
 El proyecto sigue una arquitectura modular que separa responsabilidades:
 
-- **Views:** contains the system windows: sales, inventory, gift baskets, barcode assignment, daily sales, payment, cash withdrawal, reports, and the main container.
-- **Logic:** contains business operations and reports: Z cut, cancellations (RF), ticket printing, and database access.
-- **Utilities:** auxiliary tools, such as path handling and PDF generation.
+- **Views:** contiene las ventanas del sistema: ventas, inventario, anchetas, asignación de códigos de barras, venta diaria, pago, salida de efectivo, reportes y el contenedor principal.
+- **Lógica:** contiene las operaciones de negocio y reportes: corte Z, cancelaciones (RF), impresión de tickets y acceso a la base de datos.
+- **Base de datos:** contiene la capa de acceso a datos: conexión y consultas de inventario, ventas, códigos, anchetas, reportes, salida de efectivo, RF y corte Z.
+- **Utilidades:** herramientas auxiliares, como el manejo de rutas y la generación de PDF.
 
 ### General system flow
 
