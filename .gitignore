@@ -1,3 +1,5 @@
 /corte_z
 /__pycache__
 database.db
+/dist
+/build
