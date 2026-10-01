@@ -6,6 +6,7 @@ from views.salida_efectivo import Salida_efectivo
 from views.reportes import Reportes
 from views.codigos import Codigos
 from views.decoraciones import Decoraciones
+from views.factura_electronica import FacturaElectronica
 from core.cortez import generar_corte_z
 from utils.rutas import ruta_base
 import os
@@ -75,7 +76,10 @@ class Container(tk.Frame):
         self.show_frames(Codigos,"1100x640+120+20")   
 
     def decoraciones(self):
-        self.show_frames(Decoraciones,"740x800+460+20")      
+        self.show_frames(Decoraciones,"740x800+460+20")     
+
+    def factura_electronica(self):
+        self.show_frames(FacturaElectronica,"400x300+500+170")       
 
     def cierre_z(self):
         confirmar = messagebox.askyesno("Cierre Z", "¿Está seguro de hacer el Cierre Z?\n\nEsto cerrará todas las ventas pendientes.")
@@ -114,10 +118,10 @@ class Container(tk.Frame):
         btncod_barras = ctk.CTkButton(frame1,image=self.icon_cod,compound="left",fg_color=COLOR_SECUNDARIO,text_color=COLOR_SECUNDARIO_TEXTO,font=("sans",15,"bold"),text="Cod_Barra",corner_radius=10,width=270,height=45,hover_color=COLOR_FONDO,command=self.codigos)
         btncod_barras.place(x=690,y=190)
 
-        #BOTON ARQUEO
-        self.icon_cont = ctk.CTkImage(light_image=Image.open(os.path.join(ruta_base(),"assets/icons/contabilidad.png")), size=(25, 25))
-        btnarqueo = ctk.CTkButton(frame1,image=self.icon_cont,compound="left",fg_color=COLOR_SECUNDARIO,text_color=COLOR_SECUNDARIO_TEXTO,font=("sans",15,"bold"),text="Arqueo",corner_radius=10,width=270,height=45,hover_color=COLOR_FONDO)
-        btnarqueo.place(x=400,y=250)
+        #BOTON FACTURA ELECTRONICA
+        self.icon_fe = ctk.CTkImage(light_image=Image.open(os.path.join(ruta_base(),"assets/icons/contabilidad.png")), size=(25, 25))
+        btnfe = ctk.CTkButton(frame1,image=self.icon_fe,compound="left",fg_color=COLOR_SECUNDARIO,text_color=COLOR_SECUNDARIO_TEXTO,font=("sans",15,"bold"),text="factura electronica",corner_radius=10,width=270,height=45,hover_color=COLOR_FONDO,command=self.factura_electronica)
+        btnfe.place(x=400,y=250)
 
         #BOTON CLIENTES
         self.icon_cli = ctk.CTkImage(light_image=Image.open(os.path.join(ruta_base(),"assets/icons/cliente.png")), size=(25, 25))
