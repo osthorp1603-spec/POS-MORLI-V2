@@ -75,7 +75,7 @@ The system was developed in Python, with a graphical interface in Tkinter and a 
 
 The project follows a modular architecture that separates responsibilities:
 
-- **Views:** contains the system windows: sales, inventory, gift baskets, barcode assignment, daily sales, payment, cash withdrawal, reports, and the main container.
+- **Views:** contains the system windows: sales, inventory, gift baskets, barcode assignment, daily sales, payment, cash withdrawal, reports, and the main container,reports, electronic invoicing
 - **Logic:** contains business operations and reports: Z cut, cancellations (RF), ticket printing, and database access.
 - **Database:** contains the data access layer: connection and queries for inventory, sales, codes, gift baskets, reports, cash withdrawal,     RF, and Z cut.
 - **Utilities:** auxiliary tools, such as path handling and PDF generation.

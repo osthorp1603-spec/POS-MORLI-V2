@@ -7,6 +7,10 @@ COLOR_FONDO = "#ffffff"
 COLOR_BOTON = "#A9B7C0"
 COLOR_BOTON_HOVER = "#8F9BA3"
 COLOR_BOTON_TEXTO = "#1F2937"
+COLOR_BOTON1 = "#2563EB"
+COLOR_HOVER1 = "#1D4ED8"
+COLOR_BOTON2 = "#2D8A56"            
+COLOR_HOVER2 = "#246E44" 
 
 class FacturaElectronica(tk.Frame):
     def __init__(self, parent):
@@ -18,6 +22,10 @@ class FacturaElectronica(tk.Frame):
         frame = tk.Frame(self,bg=COLOR_FONDO,highlightbackground=COLOR_FONDO,highlightthickness=0)
         frame.place(x=0,y=0,width=400,height=300)   
 
-        btnprueba = ctk.CTkButton(frame,text="Guardar",fg_color=COLOR_BOTON,font=("sans",16,"bold"),hover_color=COLOR_BOTON_HOVER,text_color=COLOR_BOTON_TEXTO,
+        btnprueba1 = ctk.CTkButton(frame,text="Guardar",fg_color=COLOR_BOTON,font=("sans",16,"bold"),hover_color=COLOR_BOTON_HOVER,text_color=COLOR_BOTON_TEXTO,
             corner_radius=10,width=190,height=40,command=lambda: webbrowser.open("https://www.youtube.com/"))
-        btnprueba.place(x=30,y=50) 
+        btnprueba1.place(x=105,y=50) 
+
+        btnprueba2 = ctk.CTkButton(frame,text="Guardar",fg_color=COLOR_BOTON,font=("sans",16,"bold"),hover_color=COLOR_BOTON_HOVER,text_color=COLOR_BOTON_TEXTO,
+            corner_radius=10,width=190,height=40,command=lambda: webbrowser.open("https://www.youtube.com/"))
+        btnprueba2.place(x=105,y=150) 
